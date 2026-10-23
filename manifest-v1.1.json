@@ -1,0 +1,33 @@
+{
+  "pack": "CCL_ICON_COMMAND_PACK",
+  "version": "v1.1",
+  "status": "PILOT_READY_VISUAL_CONTRACT",
+  "inherits": "CCL_ICON_RUNTIME_PACK_v1.0",
+  "interaction_contract": {
+    "SOAI_LENH": {
+      "default_icon": "main_128/icon-soai-lenh.webp",
+      "meaning": "thẻ lệnh / lệnh bài truyền lệnh cho mạt tướng",
+      "after_click_state": "LINH_MENH",
+      "after_click_icon": "state_128/soai-lenh-linh-menh-128.webp",
+      "front_stage_copy": "Mạt tướng lĩnh mệnh · đang thi hành",
+      "approval_semantics": false
+    },
+    "QUYET_DINH": {
+      "default_icon": "action_128/quyet-dinh-seal-128.webp",
+      "meaning": "ấn triện / ngọc tỷ dùng tại authority gate",
+      "approved_state": "DA_PHE",
+      "approved_icon": "state_128/quyet-dinh-da-phe-128.webp",
+      "front_stage_copy": "Đã phê",
+      "lock_after_approval": true,
+      "approval_semantics": true
+    }
+  },
+  "rules": [
+    "Soái Lệnh ≠ Quyết định.",
+    "Soái Lệnh sau khi bấm chuyển thành LĨNH MỆNH/ĐANG THI HÀNH; không dùng trạng thái Đã phê.",
+    "Quyết định chỉ xuất hiện tại authority gate; sau ẤN PHÊ chuyển ĐÃ PHÊ và khóa các PA.",
+    "Không dùng chữ Hán trong front-stage.",
+    "Vietnamese labels remain live text.",
+    "Existing nine semantic icons are preserved except Soái Lệnh is replaced by the new thẻ lệnh icon."
+  ]
+}
