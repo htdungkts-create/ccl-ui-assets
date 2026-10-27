@@ -31,3 +31,9 @@
 - `@media(max-width:600px)`: frame becomes a column. Rail = 5+4 grid at the top of the frame (10-col grid, row 2 starts at col 2), outside the scroll owner (not fixed/sticky), height ~107px, icon 28px, label 11.5px, active = gold underline. Pane = full width below (flex:1; min-height:0; overflow-y:auto).
 - Typography (mobile only): sans body 15px/1.55 weight 400, section headings 17–20px (sans 500 for .sh and card question; serif kept for hero title and .sec-h/.cta), hero title clamp(26px,7.4vw,30px), meta 11–13px, small-caps labels 11px/.08em. Chip moved into hero flow (no overlay), --hh 280px, --ov 40px.
 - Desktop/tablet (>600px): unchanged sidebar candidate. Gesture, routing, engine: unchanged.
+
+## P033 top rail refined (ccl-split.css rewritten; ccl-split.js only adds the ccl-live guard class)
+- Layout: top rail for all widths (no sidebar). <=719px: 5+4 grid, rail ~105px, items 48px, icon ~27px, label 11px/500. >=720px: 9 in one row (items 52px, label 12px). Rail sits outside the scroll pane. Active = burgundy tint + 2px gold underline; no dot.
+- Fonts: UI "Noto Sans","Roboto",system-ui; display "Noto Serif",Georgia (hero title, .sec-h, entry CTA). Body 15px/1.55 w400; section heading 18px w500; hero title clamp(26px,7.2vw,30px) (<=719) / up to 38px (>=720); kicker/meta 10.5–12px, tracking .04–.08em; button 14.5–15px w500; badges 11px.
+- Hero: height auto (min 210px), chip in flow; --ov 28px. Soái Lệnh portrait 56px, single column card.
+- LIVE guard: `.cs.ccl-live` (class set by loader/adapter) hides canonical compact rail, 5+4 rail, mock tags, state log, reset button and the Quyết Định card even if the adapter fails to mount.

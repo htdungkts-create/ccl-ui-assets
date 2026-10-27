@@ -3,6 +3,7 @@
    No behavior-engine/state-machine change; navigation is local (no sendPrompt). */
 (function(){
   var D=window.CCL_DATA;if(!D||!D.live)return;
+  (function(){var c=document.getElementById("cs");if(c)c.classList.add("ccl-live");})();
   var ORDER=["SOAI_LENH","QUAN_BAO","THE_TRAN","DUNG_BINH","BINH_PHAP","BINH_LUC","BINH_KHI","HOI_BAO","CHIEN_BAO"];
   var META={SOAI_LENH:["soai-lenh","Soái Lệnh",1.05],QUAN_BAO:["quan-bao","Quân Báo",1],THE_TRAN:["the-tran","Thế Trận",1.16],DUNG_BINH:["dung-binh","Dụng Binh",1.02],BINH_PHAP:["binh-phap","Binh Pháp",1.04],BINH_LUC:["binh-luc","Binh Lực",1.08],BINH_KHI:["binh-khi","Binh Khí",1.08],HOI_BAO:["hoi-bao","Hồi Báo",.93],CHIEN_BAO:["chien-bao","Chiến Báo",1.1]};
   var A=(window.CCL_BASE||"")+"assets/";
