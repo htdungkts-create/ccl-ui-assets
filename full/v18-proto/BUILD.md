@@ -26,3 +26,8 @@
 - Soái Lệnh card: 1 column (portrait 56px top row, text full width), options full-width buttons 15.5px, recommend badge in normal flow (no overlay), CTA full width.
 - Cleanup: `#bpReset` and its wrapper, `#smStore` hidden in LIVE. Raw IDs/timestamps are not rendered by the bundle; front-stage copy comes from CCL_DATA (loader).
 - Unchanged: ccl-full.*, engine/state machine, bridge, gesture (gain 2.2/threshold 7px), routing (local goTo).
+
+## P031 mobile top rail (ccl-split.css only; JS unchanged since P030)
+- `@media(max-width:600px)`: frame becomes a column. Rail = 5+4 grid at the top of the frame (10-col grid, row 2 starts at col 2), outside the scroll owner (not fixed/sticky), height ~107px, icon 28px, label 11.5px, active = gold underline. Pane = full width below (flex:1; min-height:0; overflow-y:auto).
+- Typography (mobile only): sans body 15px/1.55 weight 400, section headings 17–20px (sans 500 for .sh and card question; serif kept for hero title and .sec-h/.cta), hero title clamp(26px,7.4vw,30px), meta 11–13px, small-caps labels 11px/.08em. Chip moved into hero flow (no overlay), --hh 280px, --ov 40px.
+- Desktop/tablet (>600px): unchanged sidebar candidate. Gesture, routing, engine: unchanged.
