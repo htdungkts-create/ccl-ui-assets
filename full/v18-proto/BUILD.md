@@ -63,3 +63,8 @@
 - Z2: .sf-pane giữ mặt P032 (hero + rail lớn 5+4 + divider + card), chữ nhỏ hơn, gutter 12px.
 - Thứ tự rail: Soái Lệnh cuối bằng CSS order (như ẢNH 2–3); chờ Cun Củn xác nhận.
 - Không dùng delta P040 (ẩn nhãn).
+
+## P045 — LỚP 1 (P044)
+- ccl-split-p45.css = ccl-split-p42.css + delta P044; ccl-split-p45.js = toggle mở/đóng rail 9 icon (presentation); adapter ccl-split-p32.js KHÔNG đổi.
+- Roboto duy nhất (.cs.sf-on *), 400/500; title 22–24px; chip góc phải; Soái Lệnh bố cục sạch; toggle chevron (không fullscreen/zoom).
+- Lưu ý: `:where(#cs) button:active{all:revert}` (ccl-full.css) → selector của toggle/panel phải ≥(0,2,0).

@@ -1,0 +1,193 @@
+/* CCL SPLIT-FRAME adapter (P028 candidate) — wrapper only; canonical v18 CSS untouched. Active only when .cs.sf-on (set by ccl-split.js in LIVE). */
+.cs.sf-on{overflow:hidden}
+.sf{display:flex;height:var(--sf-h,560px);background:var(--bg);overflow:hidden;position:relative}
+.sf-rail{flex:0 0 clamp(78px,22vw,92px);display:flex;flex-direction:column;padding:6px 0;background:var(--panel);border-right:1px solid var(--line-soft);box-sizing:border-box;touch-action:pan-y}
+.sf-rail .m{flex:1 1 0;min-height:0;background:none;border:0;padding:0 3px;margin:0;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:var(--muted);font-size:12px;line-height:1.15;letter-spacing:0;text-align:center;white-space:normal;position:relative}
+.sf-rail .m img.mi{width:30px;height:30px;object-fit:contain;opacity:.72;display:block;transform:scale(var(--ms,1))}
+.sf-rail .m.on{color:var(--active)}.sf-rail .m.on img{opacity:1}
+.sf-rail .m.on{background:rgba(169,133,69,.1)}
+.sf-rail .m.on::before{content:"";position:absolute;left:0;top:10%;bottom:10%;width:3px;background:var(--gold)}
+.sf-rail .m.off{opacity:.5;cursor:default}
+.sf-pane{flex:1 1 0;min-width:0;height:100%;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;touch-action:none;position:relative;--hh:372px;--gx:16px;--gxl:16px;--gxr:16px}
+.sf-pane .hero{position:relative}
+.cs.sf-on .sheet{min-height:0}
+.cs.sf-on .cb,.cs.sf-on .entry .rail,.cs.sf-on .entry .div,.cs.sf-on .mock-tag,.cs.sf-on #smLog,.cs.sf-on .sf-hide{display:none!important}
+.sf-pane .work{padding-bottom:28px}
+.sf-pane .bc-rec em{white-space:normal}   /* pane hẹp (≈ viewport − 58px rail): cho phép xuống dòng, tránh tràn ngang ở 340px */
+
+/* ===== P030 mobile presentation correction (presentation only; engine/gesture/routing untouched) ===== */
+.sf-pane .title{font-size:clamp(22px,6.4vw,26px);white-space:normal;line-height:1.15}
+.sf-pane .lead{font-size:15px;line-height:1.5;max-width:none}
+.sf-pane .kicker{font-size:10.5px;letter-spacing:.14em}
+.sf-pane .sec-k,.sf-pane .who,.sf-pane .bc-k{font-size:11px;letter-spacing:.12em}
+.sf-pane .sec-h{font-size:22px;line-height:1.2}
+.sf-pane .sec-t{font-size:15.5px;line-height:1.5}
+.sf-pane .cta b{font-size:18px}.sf-pane .cta span{font-size:14px}
+.sf-pane .turn .msg,.sf-pane .turn.huynh .msg,.sf-pane .turn.luong .msg{font-size:15.5px;line-height:1.5}
+.sf-pane .sh{font-size:20px;line-height:1.25}
+.sf-pane .ssec>p,.sf-pane .turn.luong .msg>p{font-size:15.5px;line-height:1.5}
+.sf-pane .bcard{max-width:100%;padding:14px 14px 14px}
+.sf-pane .bc-b{grid-template-columns:minmax(0,1fr);grid-template-areas:"ill" "txt" "opts" "act";gap:12px}
+.sf-pane .bc-ill .ba{--bw:56px}
+.sf-pane .bc-q{font-size:18px;line-height:1.3}
+.sf-pane .bc-lbl{font-size:11px;letter-spacing:.1em}
+.sf-pane .bc-brief{font-size:15px;line-height:1.5}
+.sf-pane .bc-rec{font-size:14.5px;line-height:1.5}
+.sf-pane .bc-rk{font-size:11px;letter-spacing:.06em}
+.sf-pane .bc-st,.sf-pane .bc-fl{font-size:11px;letter-spacing:.06em}
+.sf-pane .bc-opts{gap:8px}
+.sf-pane .bc-o{width:100%;display:flex;flex-direction:column;align-items:flex-start;gap:4px;padding:12px 14px 12px 34px;font-size:15.5px;line-height:1.4;min-height:44px}
+.sf-pane .bc-on{display:block}
+.sf-pane .bc-tag{position:static;order:-1;align-self:flex-start;font-size:11px;padding:3px 7px 2px}
+.sf-pane .bc-od{font-size:13.5px;line-height:1.4}
+.sf-pane .bc-cta{font-size:17px;min-height:48px;width:100%}
+.sf-pane .bc-note{font-size:13.5px}
+.sf-pane .dcard b{font-size:17px}.sf-pane .dcard p,.sf-pane .dcard li{font-size:15px}
+.sf-pane .work{padding-left:16px;padding-right:16px}
+.sf-pane .tbl td{font-size:14px}.sf-pane .tbl th{font-size:11px}
+
+/* ===== P031 mobile TOP RAIL (<=600px): rail 5+4 in the frame header (outside scroll owner), pane full width below. Desktop/tablet unchanged (sidebar above). ===== */
+@media(max-width:600px){
+  .sf{flex-direction:column}
+  .sf-rail{flex:0 0 auto;width:100%;flex-direction:row;flex-wrap:wrap;display:grid;grid-template-columns:repeat(10,minmax(0,1fr));padding:4px 6px 2px;border-right:0;border-bottom:1px solid var(--line-soft)}
+  .sf-rail .m{grid-column:span 2;flex:none;height:50px;gap:2px;font-size:11.5px;line-height:1.1;padding:2px 1px}
+  .sf-rail .m:nth-child(6){grid-column:2 / span 2}
+  .sf-rail .m img.mi{width:28px;height:28px}
+  .sf-rail .m.on{background:none}
+  .sf-rail .m.on::before{left:16%;right:16%;top:auto;bottom:0;width:auto;height:2px}
+  .sf-pane{width:100%;flex:1 1 0;min-height:0;height:auto;--hh:280px;--ov:40px;--gx:14px;--gxl:14px;--gxr:14px}
+  .sf-pane .chip{position:relative;top:auto;right:auto;align-self:flex-start;margin:0 0 12px 0;z-index:2}
+  .sf-pane .work,.sf-pane .body{padding-left:14px;padding-right:14px}
+  /* typography: professional sans for UI/body, serif only for hero + Soái Lệnh display */
+  .sf-pane,.sf-pane .msg,.sf-pane .sec-t,.sf-pane .ssec>p{font-weight:400}
+  .sf-pane .title{font-size:clamp(26px,7.4vw,30px);line-height:1.15}
+  .sf-pane .lead{font-size:14.5px;line-height:1.5}
+  .sf-pane .kicker{font-size:10.5px;letter-spacing:.1em}
+  .sf-pane .sec-k,.sf-pane .who,.sf-pane .bc-k,.sf-pane .bc-lbl{font-size:11px;letter-spacing:.08em}
+  .sf-pane .sec-h{font-size:20px;line-height:1.25}
+  .sf-pane .sec-t,.sf-pane .turn .msg,.sf-pane .turn.huynh .msg,.sf-pane .turn.luong .msg,.sf-pane .ssec>p,.sf-pane .turn.luong .msg>p{font-size:15px;line-height:1.55}
+  .sf-pane .sh{font-family:var(--sans);font-weight:500;font-size:17px;line-height:1.3;margin:20px 0 6px}
+  .sf-pane .cta b{font-size:17px}.sf-pane .cta span{font-size:13px}
+  .sf-pane .bc-q{font-family:var(--sans);font-weight:500;font-size:16px;line-height:1.35}
+  .sf-pane .bc-brief{font-size:14.5px;line-height:1.5}
+  .sf-pane .bc-rec{font-size:14px;line-height:1.5}
+  .sf-pane .bc-rk,.sf-pane .bc-st,.sf-pane .bc-fl,.sf-pane .bc-tag{font-size:11px;letter-spacing:.04em}
+  .sf-pane .bc-o{font-size:14.5px;padding:11px 12px 11px 32px}
+  .sf-pane .bc-od{font-size:12.5px}
+  .sf-pane .bc-cta{font-family:var(--sans);font-weight:500;font-size:15.5px;letter-spacing:.02em}
+  .sf-pane .bc-note{font-size:12.5px}
+  .sf-pane .bcard{padding:12px}
+  .sf-pane .bc-ill .ba{--bw:48px}
+}
+
+/* ===== P041 DELTA (≤600px only) — vs P032 =====
+   Z1: sf-rail → compact strip 9 mục có nhãn đầy đủ (hình ảnh 2–3), 1 hàng, đứng yên ngoài scroll owner.
+   Z2: pane giữ mặt P032 (hero + rail lớn 5+4 + divider + card); chữ nhỏ hơn; gutter 12px. */
+@media(max-width:600px){
+  /* ---- Z1 ---- */
+  .sf-rail{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));padding:0;height:46px;background:rgba(11,14,20,.97);border-bottom:1px solid rgba(169,133,69,.18)}
+  .sf-rail .m,.sf-rail .m:nth-child(6){grid-column:auto;height:46px;gap:3px;padding:0 1px;justify-content:center;font-family:"Roboto Condensed","Arial Narrow","Helvetica Neue",var(--sans);font-stretch:condensed;font-size:8px;line-height:1;letter-spacing:.01em;white-space:nowrap;min-width:0}
+  .sf-rail .m span{display:block;max-width:100%;overflow:hidden}
+  .sf-rail .m img.mi{width:22px;height:22px}
+  .sf-rail .m.on::before{left:20%;right:20%;height:1.5px}
+  .sf-rail .m.st::after{content:"";position:absolute;top:4px;right:calc(50% - 17px);width:5px;height:5px;border-radius:50%;background:var(--amber)}
+  /* ---- Z2: mặt P032 ---- */
+  .cs.sf-on .entry .rail{display:block!important}
+  .cs.sf-on .entry .div{display:block!important}
+  .sf-pane{--hh:340px;--ov:190px;--gx:12px;--gxl:12px;--gxr:12px}
+  .sf-pane .hero{height:auto;min-height:var(--hh)}
+  .sf-pane .rail{padding-left:0;padding-right:0}
+  .sf-pane .lb{font-size:10.5px}
+  .sf-pane .ic{width:min(64px,17vw)}
+  .sf-pane .work,.sf-pane .body{padding-left:12px;padding-right:12px}
+  .sf-pane .chip{font-size:10.5px;padding:4px 10px;margin-bottom:8px}
+  /* typography: nhỏ hơn P032 ~12–15%, title mạnh hơn */
+  .sf-pane .title{font-size:clamp(19px,5.4vw,23px);line-height:1.2}
+  .sf-pane .lead{font-size:13px;line-height:1.45}
+  .sf-pane .kicker{font-size:9.5px;letter-spacing:.12em}
+  .sf-pane .sec-k,.sf-pane .who,.sf-pane .bc-k,.sf-pane .bc-lbl{font-size:10px;letter-spacing:.08em}
+  .sf-pane .sec-h{font-size:16px;line-height:1.25}
+  .sf-pane .sec-t,.sf-pane .turn .msg,.sf-pane .turn.huynh .msg,.sf-pane .turn.luong .msg,.sf-pane .ssec>p,.sf-pane .turn.luong .msg>p{font-size:13px;line-height:1.5}
+  .sf-pane .sh{font-size:15.5px;margin:18px 0 6px}
+  .sf-pane .cta b{font-size:15px}.sf-pane .cta span{font-size:12px}
+  .sf-pane .ev{font-size:12px}
+  .sf-pane .bc-q{font-size:14.5px}
+  .sf-pane .bc-brief{font-size:13px}
+  .sf-pane .bc-rec{font-size:12.5px}.sf-pane .bc-rec em{font-size:11.5px}
+  .sf-pane .bc-rk,.sf-pane .bc-st,.sf-pane .bc-fl,.sf-pane .bc-tag{font-size:10px}
+  .sf-pane .bc-o{font-size:13px;padding:10px 12px 10px 30px}
+  .sf-pane .bc-od{font-size:11.5px}
+  .sf-pane .bc-cta{font-size:14.5px}
+  .sf-pane .bc-note{font-size:11.5px}
+  .sf-pane .bcard{padding:11px 10px}
+}
+@media(max-width:600px){
+  /* thứ tự như ẢNH 2–3: Soái Lệnh cuối hàng (chỉ CSS, adapter giữ nguyên P032) */
+  .sf-rail .m[data-sem="SOAI_LENH"]{order:9}
+  .sf-rail .m{letter-spacing:0;font-size:8px}
+}
+@media(max-width:375px){.sf-rail .m{font-size:7.2px}.sf-rail .m img.mi{width:19px;height:19px}}
+
+/* ===== P044 DELTA (LỚP 1) — typography Roboto · header · toggle 9-icon · Soái Lệnh sạch =====
+   Chỉ presentation. Áp dụng ≤600px cho phần kích thước; font + toggle áp dụng khi .sf-on. */
+.cs.sf-on{--sans:Roboto,"Helvetica Neue",Arial,system-ui,sans-serif;--serif:var(--sans);--sp1:8px;--sp2:12px;--sp3:16px;--sp4:24px}
+.cs.sf-on *{font-family:var(--sans)!important;font-stretch:normal!important;font-synthesis:none}
+.sf-rail .sf-tg{order:10;flex:none;width:100%;height:46px;display:grid;place-items:center;padding:0;margin:0;background:transparent;border:0;border-left:1px solid rgba(169,133,69,.18);color:var(--sech);cursor:pointer;-webkit-tap-highlight-color:transparent}
+.sf-rail .sf-tg svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;transition:transform .16s}
+.sf-rail .sf-tg[aria-expanded="true"] svg{transform:rotate(180deg)}
+.sf .sf-full{display:none;flex:none;background:rgba(11,14,20,.98);border-bottom:1px solid rgba(169,133,69,.18);padding:12px 8px 8px;box-sizing:border-box;touch-action:pan-y}
+.sf .sf-full.open{display:flex;flex-wrap:wrap;justify-content:center;row-gap:8px}
+.sf .sf-full .it{flex:0 0 20%;width:20%;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;background:none;border:0;padding:4px 0;color:var(--body);-webkit-tap-highlight-color:transparent;position:relative}
+.sf .sf-full .it img{width:44px;height:44px;object-fit:contain;opacity:.85}
+.sf .sf-full .it .lb{font-size:10.5px;font-weight:500;line-height:1.2;letter-spacing:0}
+.sf .sf-full .it.on{color:var(--active)}.sf-full .it.on img{opacity:1}
+.sf .sf-full .it.on::after{content:"";position:absolute;left:28%;right:28%;bottom:0;height:1.5px;background:var(--gold)}
+.sf .sf-full .it.off{opacity:.45;cursor:default}
+@media(max-width:600px){
+  .sf-rail{grid-template-columns:repeat(9,minmax(0,1fr)) 28px}
+  .sf-rail .m{font-weight:500}
+  /* header: chip góc phải, title nhỏ, trung tính */
+  .sf-pane .hero{--hh:300px}
+  .sf-pane .chip{position:absolute!important;top:12px;right:12px;left:auto;margin:0;align-self:auto;font-size:10px;font-weight:500;padding:3px 9px;gap:6px}
+  .sf-pane .chip i{width:5px;height:5px}
+  .sf-pane .kicker{font-size:9.5px;font-weight:500;letter-spacing:.14em}
+  .sf-pane .title{font-size:clamp(22px,5.9vw,24px);font-weight:500;line-height:1.2;letter-spacing:-.01em;color:#E8E3D6;margin:8px 0 8px}
+  .sf-pane .lead{font-size:13px;font-weight:400;line-height:1.5;color:#B4AFA3}
+  .sf-pane .lb{font-weight:500}
+  /* hierarchy chung */
+  .sf-pane .sec-k{font-size:9.5px;font-weight:500;letter-spacing:.12em}
+  .sf-pane .sec-h{font-size:17px;font-weight:500;line-height:1.3;color:#E8E3D6;margin:8px 0}
+  .sf-pane .sec-t,.sf-pane .ssec>p,.sf-pane .turn .msg p,.sf-pane .turn .msg li{font-size:13px;font-weight:400;line-height:1.5}
+  .sf-pane .sh{font-size:15px;font-weight:500;line-height:1.3;color:#E8E3D6;margin:24px 0 8px}
+  .sf-pane .who{font-size:9.5px;font-weight:500;letter-spacing:.12em}
+  .sf-pane .cta b{font-size:15px;font-weight:500}
+  /* Soái Lệnh: một cấu trúc sạch */
+  .sf-pane .bcard{padding:12px;border-radius:8px;background:rgba(16,20,28,.7)}
+  .sf-pane .bcard::before,.sf-pane .bcard::after{display:none}
+  .sf-pane .bc-h{gap:8px;margin-bottom:12px;align-items:center}
+  .sf-pane .bc-k{font-size:9.5px;font-weight:500;letter-spacing:.12em}
+  .sf-pane .bc-st,.sf-pane .bc-fl{position:static;font-size:9.5px;font-weight:500;letter-spacing:.06em;padding:2px 8px}
+  .sf-pane .bc-b{grid-template-columns:48px 1fr;gap:12px}
+  .sf-pane .bc-ill .ba{--bw:48px}
+  .sf-pane .bc-q{font-size:15px;font-weight:500;line-height:1.35;color:#E8E3D6}
+  .sf-pane .bc-lbl{font-size:9.5px;font-weight:500;letter-spacing:.1em;margin:8px 0 4px}
+  .sf-pane .bc-brief{font-size:13px;line-height:1.5}
+  .sf-pane .bc-rec{font-size:13px;line-height:1.5;margin-top:8px}
+  .sf-pane .bc-rec em{display:block;font-size:11px;margin-top:4px}
+  .sf-pane .bc-rk{display:block;font-size:9.5px;font-weight:500;letter-spacing:.1em;margin-bottom:4px}
+  .sf-pane .bc-opts{display:flex;flex-direction:column;gap:8px}
+  .sf-pane .bc-o{position:relative;font-size:13px;font-weight:500;line-height:1.4;padding:12px 12px 12px 36px;gap:4px;min-height:44px}
+  .sf-pane .bc-o::before{left:14px!important;top:16px!important}
+  .sf-pane .bc-on{display:block;font-size:13px;font-weight:500}
+  .sf-pane .bc-tag{position:static;display:inline-block;align-self:flex-start;font-size:9.5px;font-weight:500;padding:2px 6px;margin:0 0 4px}
+  .sf-pane .bc-od{font-size:11.5px;font-weight:400;line-height:1.4}
+  .sf-pane .bc-cta{font-size:14px;font-weight:500;letter-spacing:.02em;margin-top:12px;min-height:44px}
+  .sf-pane .bc-note{font-size:11px}
+  .sf-pane .work-in,.sf-pane .work{padding-bottom:24px}
+}
+.sf .sf-full .it[data-sem="SOAI_LENH"]{order:9}
+@media(max-width:600px){
+  .sf-pane .bc-b{grid-template-columns:48px minmax(0,1fr);grid-template-areas:"ill txt" "opts opts" "act act";gap:12px}
+  .sf-pane .bc-q{font-size:15px!important}
+}
+@media(max-width:600px){.sf-pane .bc-lbl{font-size:9.5px!important;letter-spacing:.1em!important}}
