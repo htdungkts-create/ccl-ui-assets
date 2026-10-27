@@ -19,6 +19,7 @@
     /* Quyết Định: ẩn khi chưa có authority point thật */
     if(!D.qd_live){var h=[].slice.call(work.querySelectorAll("h3.sh")).filter(function(x){return/^Quyết Định/.test(x.textContent);})[0];
       if(h){var n=h.nextElementSibling;h.classList.add("sf-hide");while(n&&!(n.matches&&(n.matches("h3,span.mock-tag")))){n.classList.add("sf-hide");n=n.nextElementSibling;}}}
+    [].slice.call(work.querySelectorAll("#bpReset,#smStore")).forEach(function(x){x.classList.add("sf-hide");if(x.parentElement&&x.parentElement!==msg&&x.id==="bpReset")x.parentElement.classList.add("sf-hide");});
     var sf=el("div","sf"),rail=el("nav","sf-rail"),pane=el("div","sf-pane");
     rail.setAttribute("aria-label","Chín mục");pane.id="sfp";pane.tabIndex=-1;
     ORDER.forEach(function(id){var m=META[id],b=el("button","m",'<img class="mi" style="--ms:'+m[2]+'" src="'+A+"mini/mini-"+m[0]+'.webp" alt="" data-fb="'+A+"icon-"+m[0]+'.webp" onerror="this.onerror=null;this.src=this.dataset.fb"><span>'+m[1]+"</span>");

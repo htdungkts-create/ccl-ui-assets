@@ -19,3 +19,10 @@
 - LIVE clean: compact rail, main 5+4 rail, mock tags, state-machine log hidden; Quyết Định hidden unless `CCL_DATA.qd_live`.
 - Native deltas: hero height 372px (bounded frame); narrow-pane `.bc-rec em` wraps; sidebar order = Soái Lệnh first (Huynh's P026 reference image).
 - Optional data: `CCL_DATA.sections` [{sem,title,paras[]}] and `frame_h`; text rendered via escaping.
+
+## P030 mobile presentation correction (ccl-split.css/js only)
+- Sidebar: width clamp(78px,22vw,92px), icon 30px, label 12px (1 line at 340–412), active = gold left bar + tint (status dot removed in sidebar), off items opacity .5. Frame height default 560, loader may set 600.
+- Pane: gutters 16px (--gx/--gxl/--gxr overridden on .sf-pane), body 15.5px/1.5, section headings 20–22px, hero title clamp(22px,6.4vw,26px) wraps, lead 15px.
+- Soái Lệnh card: 1 column (portrait 56px top row, text full width), options full-width buttons 15.5px, recommend badge in normal flow (no overlay), CTA full width.
+- Cleanup: `#bpReset` and its wrapper, `#smStore` hidden in LIVE. Raw IDs/timestamps are not rendered by the bundle; front-stage copy comes from CCL_DATA (loader).
+- Unchanged: ccl-full.*, engine/state machine, bridge, gesture (gain 2.2/threshold 7px), routing (local goTo).
