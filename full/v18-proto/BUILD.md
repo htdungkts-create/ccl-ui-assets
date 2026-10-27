@@ -46,3 +46,6 @@
 
 ## P036b · Huynh feedback 28/10 01:00 — `ccl-shell-p37.css`
 - = ccl-shell-p36.css + D4 (≤759px): gutter 20→14px, rail sát mép, icon 70→58px, chữ nhỏ ~15% (title 23→19, body 13.5→12–12.5, nhãn 12→10, sh 15→13.5), thẻ Soái Lệnh gọn; `html,body{margin:0;padding:0}`. Màu/nền/asset/font family/cấu trúc giữ CH6T277.
+
+## P036c · Huynh feedback 28/10 01:06 — `ccl-shell-p38.css`
+- = p37 + D5: font Inter 400/500/600 (theo ảnh tham chiếu LIVE CH6T277) + Roboto Condensed cho nhãn strip; chữ nhỏ thêm (title 15.5/600, sec-h 13.5, body 11.5, sh 12.5); rail = compact strip CH6T277 (.cb) in-flow đầu khung + mũi tên mở bảng 5+4 (checkbox CSS, không JS); hero gọn 250–290px, bỏ rail lớn trong hero (không trùng rail).
