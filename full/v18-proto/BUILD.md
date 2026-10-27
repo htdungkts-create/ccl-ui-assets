@@ -52,3 +52,7 @@
 
 ## P037 → P038 · Exact-source shell — `ccl-shell-p39.css`
 - = ccl-shell-p36.css (CH6T277 CSS nguyên văn + D1 asset URL + D2 host button revert) + D4 compact rail `.cb` in-flow trước khu hội thoại (fixed bị cấm). Font stack nguyên source (ui-serif/Georgia · system-ui), không web font. P036b/c (p37/p38: Inter, chữ nhỏ, bỏ rail hero, checkbox) bị REVERT theo P037 — file giữ lại làm lịch sử, không dùng.
+
+## P039 → P040 · P032 + compact-rail delta
+- Root = commit 579a399 (P032). `ccl-split-p32.js` = byte-identical `ccl-split.js@579a399` (sha 5cdf72d9…3a94b). `ccl-full.css/js` unchanged. P033–P038 files are history, not merged.
+- `ccl-split-p32d.css` = `ccl-split.css@579a399` (sha 39c4d48b…1df4) + 5 lines: `@media(max-width:600px){.cb-rail .m span{display:none}.cb-in{--mi:24px}}`.
