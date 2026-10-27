@@ -43,3 +43,6 @@
 - Deltas: D1 asset url → absolute jsDelivr @cc29529; D2 `:where(#cs) button{all:revert}` (host button pre-style, P020); D3 `.cb` not rendered (position:fixed forbidden in widget; CH6T277 entry also hides it).
 - `ccl-shell-p36.css` = same CSS as the shell file (relative asset urls) for loader use.
 - ccl-full.* / ccl-split.* untouched.
+
+## P036b · Huynh feedback 28/10 01:00 — `ccl-shell-p37.css`
+- = ccl-shell-p36.css + D4 (≤759px): gutter 20→14px, rail sát mép, icon 70→58px, chữ nhỏ ~15% (title 23→19, body 13.5→12–12.5, nhãn 12→10, sh 15→13.5), thẻ Soái Lệnh gọn; `html,body{margin:0;padding:0}`. Màu/nền/asset/font family/cấu trúc giữ CH6T277.
