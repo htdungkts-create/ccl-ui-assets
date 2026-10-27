@@ -1,0 +1,16 @@
+/* CCL SPLIT-FRAME adapter (P028 candidate) — wrapper only; canonical v18 CSS untouched. Active only when .cs.sf-on (set by ccl-split.js in LIVE). */
+.cs.sf-on{overflow:hidden}
+.sf{display:flex;height:var(--sf-h,560px);background:var(--bg);overflow:hidden;position:relative}
+.sf-rail{flex:0 0 58px;display:flex;flex-direction:column;justify-content:space-between;padding:6px 2px;background:var(--panel);border-right:1px solid var(--line-soft);box-sizing:border-box;touch-action:pan-y}
+.sf-rail .m{flex:1 1 0;min-height:0;background:none;border:0;padding:0;margin:0;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:var(--muted);font-size:9.5px;line-height:1;letter-spacing:-.01em;white-space:nowrap;position:relative}
+.sf-rail .m img.mi{width:26px;height:26px;object-fit:contain;opacity:.72;display:block;transform:scale(var(--ms,1))}
+.sf-rail .m.on{color:var(--active)}.sf-rail .m.on img{opacity:1}
+.sf-rail .m.on::before{content:"";position:absolute;left:0;top:18%;bottom:18%;width:2px;background:var(--gold)}
+.sf-rail .m.st::after{content:"";position:absolute;top:6px;right:9px;width:5px;height:5px;border-radius:50%;background:var(--amber)}
+.sf-rail .m.off{opacity:.32;cursor:default}
+.sf-pane{flex:1 1 0;min-width:0;height:100%;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;touch-action:none;position:relative;--hh:372px}
+.sf-pane .hero{position:relative}
+.cs.sf-on .sheet{min-height:0}
+.cs.sf-on .cb,.cs.sf-on .entry .rail,.cs.sf-on .entry .div,.cs.sf-on .mock-tag,.cs.sf-on #smLog,.cs.sf-on .sf-hide{display:none!important}
+.sf-pane .work{padding-bottom:28px}
+.sf-pane .bc-rec em{white-space:normal}   /* pane hẹp (≈ viewport − 58px rail): cho phép xuống dòng, tránh tràn ngang ở 340px */
