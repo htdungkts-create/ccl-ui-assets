@@ -12,12 +12,13 @@ styles=re.findall(r'<style>(.*?)</style>',s,flags=re.S)
 scripts=re.findall(r'<script>(.*?)</script>',s,flags=re.S)
 assert len(styles)==2 and len(scripts)==3
 css=styles[1]   # styles[0] = artifact publish skeleton reset, not page source
+css+="\n/* HOST ISOLATION (P020): chat host pre-styles <button>; revert host element rules inside #cs (specificity 0,0,1 · loaded after host) so canonical class rules apply as in v18. */\n:where(#cs) button,:where(#cs) button:hover,:where(#cs) button:active,:where(#cs) button:focus{all:revert}\n"
 css+="\n/* NATIVE DELTA (P016 §4): chat widget cấm position:fixed và không có cuộn nội bộ → compact rail in-flow đầu khung, không sticky. */\n.cb{position:relative;transform:none;opacity:1;pointer-events:auto}\n"
 js=scripts[1]
 # 1. FULL MODE canonical (= ?proto=1)
 js=once(js,'const DEV=["proto","test","state","log","dbg","ba"].some(k=>_q.has(k));','const DEV=true;   /* CHAT-NATIVE FULL MODE (P016 §1) */')
 # 2. asset base (CDN commit-pinned base injected by loader)
-js='var CCL_A=(window.CCL_BASE||"")+"assets/";\n'+js
+js='var CCL_A=(window.CCL_BASE||(function(){var c=document.currentScript;return c&&c.src?c.src.replace(/[^/]*$/,""):"";})())+"assets/";\n'+js
 js=once(js,'const BA_DIR="assets/behavior/";','const BA_DIR=CCL_A+"behavior/";')
 js=once(js,'const MINI_DIR="assets/mini/";','const MINI_DIR=CCL_A+"mini/";')
 js=once(js,'<img src="assets/icon-${f}.webp"','<img src="${CCL_A}icon-${f}.webp"')

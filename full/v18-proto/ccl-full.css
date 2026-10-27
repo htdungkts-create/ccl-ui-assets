@@ -353,5 +353,8 @@ html[data-entry="LIVE"] .hero .title{font-family:var(--sans);font-weight:600;fon
 html[data-entry="LIVE"] .body .sec-h{font-family:var(--sans);font-weight:600;font-style:normal;font-size:15px;line-height:1.35;width:100%;white-space:normal;overflow-wrap:break-word;word-break:normal;text-wrap:balance}
 html[data-entry="LIVE"] .hero .lead{max-width:100%}
 @media(min-width:760px){html[data-entry="LIVE"] .hero .title{font-size:24px}html[data-entry="LIVE"] .hero .lead{font-size:16px}html[data-entry="LIVE"] .body .sec-h{font-size:19px}html[data-entry="LIVE"] .body .sec-t{font-size:16px}html[data-entry="LIVE"] .cta b,html[data-entry="LIVE"] .cta span{font-size:15px}}
+/* HOST ISOLATION (P020): chat host pre-styles <button>; revert host element rules inside #cs (specificity 0,0,1 · loaded after host) so canonical class rules apply as in v18. */
+:where(#cs) button,:where(#cs) button:hover,:where(#cs) button:active,:where(#cs) button:focus{all:revert}
+
 /* NATIVE DELTA (P016 §4): chat widget cấm position:fixed và không có cuộn nội bộ → compact rail in-flow đầu khung, không sticky. */
 .cb{position:relative;transform:none;opacity:1;pointer-events:auto}

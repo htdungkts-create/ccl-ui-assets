@@ -6,3 +6,8 @@
 - Runtime data is injected per chat turn via `window.CCL_DATA`; transport via `window.CCL_BRIDGE` (sendPrompt in the same chat).
 - Native delta: compact rail `.cb` in-flow (chat widget forbids position:fixed).
 - Authority: CHO PHÉP PUBLIC UI BUNDLE (P018). Pin by commit hash only.
+
+## P020 correction
+- Asset base: bundle no longer depends on the loader running first; base = window.CCL_BASE or the bundle's own script URL (document.currentScript).
+- Loader must inject the bundle script dynamically AFTER setting CCL_BASE/CCL_DATA/CCL_BRIDGE (widget runs external scripts before inline ones).
+- Host isolation: `:where(#cs) button{all:revert}` so chat host button styles do not override canonical class rules.

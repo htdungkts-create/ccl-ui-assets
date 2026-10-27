@@ -578,7 +578,7 @@
 });
 
 /*CCL_SM:END*/
-var CCL_A=(window.CCL_BASE||"")+"assets/";
+var CCL_A=(window.CCL_BASE||(function(){var c=document.currentScript;return c&&c.src?c.src.replace(/[^/]*$/,""):"";})())+"assets/";
 
 /* Template chỉ nhận dữ liệu. Claude chỉ đổi STATE mỗi lượt. */
 /* MOCK RUNTIME — chưa nối state machine. Entry đọc state từ đây; không hard-code "chờ quyết".
