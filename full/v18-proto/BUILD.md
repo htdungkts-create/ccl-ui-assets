@@ -41,4 +41,5 @@
 ## P035 → P036 · Static exact-look shell (CH6T277 baseline)
 - File: `ccl-shell-p36-ch6t277.html` — static, no JS, no engine. CSS = CH6T277 (artifact CH6T277z6tcwNMgzLepAoN, version 1792925718-0a34) style block verbatim; DOM = rendered CH6T277 entry + work stream (classes unchanged), content = MODUS read-only text, no MOCK/debug blocks.
 - Deltas: D1 asset url → absolute jsDelivr @cc29529; D2 `:where(#cs) button{all:revert}` (host button pre-style, P020); D3 `.cb` not rendered (position:fixed forbidden in widget; CH6T277 entry also hides it).
+- `ccl-shell-p36.css` = same CSS as the shell file (relative asset urls) for loader use.
 - ccl-full.* / ccl-split.* untouched.
