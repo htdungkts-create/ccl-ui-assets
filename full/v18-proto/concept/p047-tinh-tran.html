@@ -1,0 +1,163 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tĩnh Trận concept</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"><style>body{margin:0;background:#0D1016}</style><script>window.TT_BASE="../";</script></head><body>
+<style>
+.tt{--bg:#0D1016;--s1:#12161E;--s2:#181D27;--line:rgba(236,231,220,.08);--line2:rgba(236,231,220,.14);--tx:#ECE7DC;--tx2:rgba(236,231,220,.68);--tx3:rgba(236,231,220,.46);--gold:#C9A45C;--gold-a:rgba(201,164,92,.10);--grn:#82B79B;--grn-a:rgba(130,183,155,.08);--r:10px;--g:16px;
+  font-family:Roboto,"Helvetica Neue",Arial,sans-serif;color:var(--tx);background:var(--bg);width:100%;height:var(--h,640px);display:flex;flex-direction:column;overflow:hidden;position:relative;-webkit-font-smoothing:antialiased;box-sizing:border-box}
+.tt *{box-sizing:border-box;margin:0;font-family:inherit}
+.tt button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+/* TẦNG 1 · COMMAND RAIL */
+.tt .rail{flex:none;display:grid;grid-template-columns:repeat(9,minmax(0,1fr)) 40px;height:58px;background:var(--bg);border-bottom:1px solid var(--line);position:relative;z-index:3}
+.tt .ri{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;position:relative;color:var(--tx3);min-width:0}
+.tt .ri img{width:22px;height:22px;object-fit:contain;opacity:.7}
+.tt .ri span{font-size:9.5px;font-weight:500;line-height:1.1;text-align:center;letter-spacing:.01em}
+.tt .ri.has{color:var(--tx2)}.tt .ri.has img{opacity:.95}
+.tt .ri.off{opacity:.5;cursor:default}
+.tt .ri.on{color:var(--tx)}
+.tt .ri.on::after{content:"";position:absolute;left:30%;right:30%;bottom:0;height:2px;border-radius:2px;background:var(--gold)}
+.tt .ri .dot{position:absolute;top:8px;right:calc(50% - 15px);width:5px;height:5px;border-radius:50%;background:var(--gold)}
+.tt .disc{display:grid;place-items:center;border-left:1px solid var(--line);color:var(--tx2)}
+.tt .disc svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;transition:transform .18s}
+.tt .disc[aria-expanded="true"]{color:var(--gold)}.tt .disc[aria-expanded="true"] svg{transform:rotate(180deg)}
+/* BÀN CHỨC NĂNG 5+4 */
+.tt .sheet{position:absolute;left:0;right:0;top:58px;z-index:2;background:var(--s2);border-bottom:1px solid var(--line2);box-shadow:0 18px 40px rgba(0,0,0,.45);padding:16px var(--g) 16px;transform:translateY(-8px);opacity:0;visibility:hidden;transition:opacity .16s,transform .16s,visibility .16s}
+.tt .sheet.open{transform:none;opacity:1;visibility:visible}
+.tt .sh-h{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:12px}
+.tt .sh-h b{font-size:13px;font-weight:500}.tt .sh-h span{font-size:11px;color:var(--tx3)}
+.tt .grid{display:flex;flex-wrap:wrap;justify-content:center;row-gap:8px}
+.tt .gi{flex:0 0 20%;display:flex;flex-direction:column;align-items:center;gap:6px;padding:8px 0 10px;border-radius:var(--r);position:relative;color:var(--tx2)}
+.tt .gi img{width:46px;height:46px;object-fit:contain}
+.tt .gi span{font-size:11px;font-weight:500;line-height:1.2}
+.tt .gi em{font-style:normal;font-size:10px;color:var(--tx3);line-height:1}
+.tt .gi.off{opacity:.42;cursor:default}
+.tt .gi.on{background:var(--gold-a);color:var(--tx)}
+.tt .gi.on::after{content:"";position:absolute;left:32%;right:32%;bottom:0;height:2px;border-radius:2px;background:var(--gold)}
+.tt .scrim{position:absolute;inset:58px 0 0;background:rgba(8,10,14,.55);z-index:1;opacity:0;visibility:hidden;transition:opacity .16s,visibility .16s}
+.tt .scrim.open{opacity:1;visibility:visible}
+/* WORK PANE (scroll owner duy nhất) */
+.tt .pane{flex:1 1 0;min-height:0;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;scroll-behavior:smooth}
+/* TẦNG 2 · SITUATION HEADER */
+.tt .hd{position:relative;padding:16px var(--g) 16px;border-bottom:1px solid var(--line);overflow:hidden}
+.tt .hd::before{content:"";position:absolute;inset:0;background:var(--tex) center 62%/cover no-repeat;opacity:.34;filter:saturate(.75)}
+.tt .hd::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(13,16,22,.96) 0%,rgba(13,16,22,.78) 55%,rgba(13,16,22,.55) 100%),linear-gradient(0deg,var(--bg) 0%,rgba(13,16,22,0) 60%)}
+.tt .hd>*{position:relative;z-index:1}
+.tt .hd-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px}
+.tt .kick{font-size:11px;font-weight:500;color:var(--tx3);letter-spacing:.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tt .chip{flex:none;display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:500;color:var(--gold);padding:4px 10px;border:1px solid rgba(201,164,92,.35);border-radius:999px;background:rgba(13,16,22,.6)}
+.tt .chip i{width:5px;height:5px;border-radius:50%;background:currentColor}
+.tt .chip.calm{color:var(--tx2);border-color:var(--line2)}
+.tt h1{font-size:23px;font-weight:500;line-height:1.22;letter-spacing:-.01em}
+.tt .meta{margin-top:8px;font-size:11px;color:var(--tx3)}
+/* TẦNG 3 · WORK SURFACE */
+.tt .ws{padding:8px var(--g) 24px}
+.tt .blk{padding:16px 0;border-bottom:1px solid var(--line);scroll-margin-top:0}
+.tt .blk:last-child{border-bottom:0}
+.tt .bl{display:flex;align-items:center;gap:8px;margin-bottom:8px;font-size:11px;font-weight:500;color:var(--tx3);letter-spacing:.02em}
+.tt .bl img{width:16px;height:16px;object-fit:contain;opacity:.85}
+.tt h2{font-size:17px;font-weight:500;line-height:1.3;margin-bottom:8px}
+.tt p,.tt li{font-size:13.5px;line-height:1.5;color:var(--tx2)}
+.tt ul{padding:0;list-style:none;display:grid;gap:8px;margin-top:8px}
+.tt li{position:relative;padding-left:16px}.tt li::before{content:"";position:absolute;left:2px;top:9px;width:4px;height:4px;border-radius:50%;background:var(--tx3)}
+.tt .ev{margin-top:8px;font-size:11.5px;color:var(--tx3)}
+/* next-step strip trong A */
+.tt .next{display:flex;align-items:center;gap:12px;margin-top:12px;padding:12px;border-radius:var(--r);background:var(--s1);border:1px solid var(--line);width:100%;text-align:left}
+.tt .next .nx{flex:1;min-width:0}
+.tt .next b{display:block;font-size:14px;font-weight:500;color:var(--tx)}
+.tt .next span{display:block;font-size:12px;color:var(--tx2);margin-top:2px}
+.tt .next svg{flex:none;width:16px;height:16px;stroke:var(--gold);fill:none;stroke-width:1.6}
+/* DECISION DOCKET */
+.tt .dk{padding:16px 0 8px}
+.tt .eb{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:500;letter-spacing:.08em;color:var(--gold);margin-bottom:8px}
+.tt .eb img{width:18px;height:18px;object-fit:contain}
+.tt .ctx{margin-top:12px}
+.tt .lbl{display:block;font-size:11px;font-weight:500;color:var(--tx3);margin-bottom:4px}
+.tt .rec{margin-top:16px;padding:12px;border-radius:var(--r);background:var(--grn-a);border-left:2px solid var(--grn)}
+.tt .rec .lbl{color:var(--grn)}
+.tt .rec p{color:var(--tx)}
+.tt .rec small{display:block;margin-top:4px;font-size:11px;color:var(--tx3)}
+.tt .opts{margin-top:16px;display:grid;gap:8px}
+.tt .op{display:grid;grid-template-columns:18px minmax(0,1fr);gap:12px;align-items:start;width:100%;text-align:left;padding:12px;border-radius:var(--r);border:1px solid var(--line2);background:transparent;transition:border-color .14s,background .14s}
+.tt .op .rd{width:18px;height:18px;border-radius:50%;border:1.5px solid var(--tx3);margin-top:1px;display:grid;place-items:center}
+.tt .op .on{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px}
+.tt .op b{font-size:14px;font-weight:500;color:var(--tx)}
+.tt .op .tg{font-size:10.5px;font-weight:500;color:var(--grn)}
+.tt .op .od{display:block;margin-top:4px;font-size:12px;color:var(--tx2)}
+.tt .op[aria-checked="true"]{border-color:rgba(201,164,92,.6);background:var(--gold-a)}
+.tt .op[aria-checked="true"] .rd{border-color:var(--gold)}
+.tt .op[aria-checked="true"] .rd::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--gold)}
+.tt .act{margin-top:16px}
+.tt .stt{font-size:11.5px;color:var(--tx3);margin-bottom:8px;min-height:16px}
+.tt .cta{width:100%;height:44px;border-radius:var(--r);font-size:14px;font-weight:500;letter-spacing:.01em;border:1px solid var(--line2);color:var(--tx3)}
+.tt .cta.ready{border-color:var(--gold);color:#16130C;background:var(--gold)}
+@media(min-width:601px){.tt{--g:24px}.tt h1{font-size:24px}}
+</style>
+<div class="tt" id="tt">
+  <nav class="rail" id="rail" aria-label="Chín chức năng"></nav>
+  <div class="scrim" id="scrim"></div>
+  <div class="sheet" id="sheet" aria-label="Bàn chức năng"><div class="sh-h"><b>Bàn chức năng</b><span id="shc"></span></div><div class="grid" id="grid"></div></div>
+  <div class="pane" id="pane">
+    <header class="hd" id="hd">
+      <div class="hd-top"><span class="kick">MODUS · Thẩm tra · Vòng 1</span><span class="chip" id="chip"><i></i>Chờ Huynh quyết</span></div>
+      <h1>Cụm VIII đã thẩm nghị xong</h1>
+      <div class="meta">Cập nhật 14:07 · sổ trạng thái CCL</div>
+    </header>
+    <main class="ws">
+      <section class="blk" id="s-THE_TRAN" data-sem="THE_TRAN">
+        <div class="bl">Thế Trận · hiện trạng</div>
+        <ul><li>Bốn ý VIII-01 đến VIII-04 đều giữ ý kiến thẩm tra.</li><li>52 ý của Cụm I–VII giữ nguyên, chưa đóng.</li></ul>
+        <button class="next" type="button" id="toSL"><div class="nx"><b>Bước tiếp: hạ lệnh cho Cụm VIII</b><span>Lượng kiến nghị đọc lại 4 ý trước khi quyết.</span></div><svg viewBox="0 0 16 16"><path d="M6 3l5 5-5 5"/></svg></button>
+      </section>
+      <section class="blk" id="s-CHIEN_BAO" data-sem="CHIEN_BAO">
+        <div class="bl">Chiến Báo · đại cục</div>
+        <p>Bước kế cho Cụm VIII (Word Cụm VIII hoặc bổ sung bản tổng) chưa mở. Chờ chỉ đạo của Huynh.</p>
+      </section>
+      <section class="blk dk" id="s-SOAI_LENH" data-sem="SOAI_LENH">
+        <div class="eb"><img alt="" data-ic="soai-lenh">SOÁI LỆNH · ĐIỂM NỐI</div>
+        <h2>Lệnh tiếp theo cho mạch thẩm tra MODUS</h2>
+        <div class="ctx"><span class="lbl">Việc cần hạ lệnh</span><p>Cụm VIII đã thẩm nghị, chờ chỉ đạo bước kế.</p></div>
+        <div class="rec"><span class="lbl">Lượng kiến nghị</span><p>Đọc lại nội dung 4 ý trước khi quyết bước kế.</p><small>Kiến nghị chưa phải quyết định.</small></div>
+        <div class="opts" role="radiogroup" aria-label="Lựa chọn">
+          <button class="op" type="button" role="radio" aria-checked="false"><span class="rd"></span><span><span class="on"><b>Đọc nội dung 4 ý Cụm VIII</b><span class="tg">Kiến nghị</span></span><span class="od">Chỉ đọc, không ghi.</span></span></button>
+          <button class="op" type="button" role="radio" aria-checked="false"><span class="rd"></span><span><span class="on"><b>Rà dữ liệu bổ sung I–VII</b></span><span class="od">Chỉ đọc, không ghi.</span></span></button>
+        </div>
+        <div class="act"><div class="stt" id="stt">Chưa chọn hướng.</div><button class="cta" type="button" id="cta" disabled>Truyền lệnh</button></div>
+      </section>
+      <section class="blk" id="s-QUAN_BAO" data-sem="QUAN_BAO">
+        <div class="bl">Quân Báo · căn cứ</div>
+        <p>Đã đọc trạng thái hiện hành của việc thẩm tra MODUS và việc mẹ.</p>
+        <div class="ev">Nguồn: sổ trạng thái CCL, cập nhật 14:07 hôm nay.</div>
+      </section>
+    </main>
+  </div>
+</div>
+<script>
+(function(){
+  var B=window.TT_BASE||"",A=B+"assets/";
+  var F=[["QUAN_BAO","quan-bao","Quân Báo"],["THE_TRAN","the-tran","Thế Trận"],["DUNG_BINH","dung-binh","Dụng Binh"],["BINH_PHAP","binh-phap","Binh Pháp"],["BINH_LUC","binh-luc","Binh Lực"],["BINH_KHI","binh-khi","Binh Khí"],["HOI_BAO","hoi-bao","Hồi Báo"],["CHIEN_BAO","chien-bao","Chiến Báo"],["SOAI_LENH","soai-lenh","Soái Lệnh"]];
+  var root=document.getElementById("tt"),rail=document.getElementById("rail"),grid=document.getElementById("grid"),sheet=document.getElementById("sheet"),scrim=document.getElementById("scrim"),pane=document.getElementById("pane");
+  root.style.setProperty("--tex",'url("'+A+'hero-wide-1536x1024.webp")');
+  [].forEach.call(root.querySelectorAll("img[data-ic]"),function(i){i.src=A+"mini/mini-"+i.dataset.ic+".webp";});
+  var DECIDE="SOAI_LENH",has=function(s){return !!document.getElementById("s-"+s);};
+  F.forEach(function(f){var two=f[2].split(" ");
+    var b=document.createElement("button");b.type="button";b.className="ri"+(has(f[0])?" has":" off");b.dataset.sem=f[0];
+    b.innerHTML='<img alt="" src="'+A+'mini/mini-'+f[1]+'.webp"><span>'+two[0]+'<br>'+two[1]+'</span>'+(f[0]===DECIDE?'<i class="dot"></i>':'');rail.appendChild(b);
+    var g=document.createElement("button");g.type="button";g.className="gi"+(has(f[0])?"":" off");g.dataset.sem=f[0];
+    g.innerHTML='<img alt="" src="'+A+'icon-'+f[1]+'.webp"><span>'+f[2]+'</span><em>'+(f[0]===DECIDE?"Chờ quyết":has(f[0])?"Có nội dung":"Chưa có")+'</em>';grid.appendChild(g);});
+  document.getElementById("shc").textContent=F.filter(function(f){return has(f[0]);}).length+"/9 có nội dung";
+  var d=document.createElement("button");d.type="button";d.className="disc";d.setAttribute("aria-expanded","false");d.setAttribute("aria-label","Mở bàn chức năng");
+  d.innerHTML='<svg viewBox="0 0 14 14"><path d="M3 5.5l4 4 4-4"/></svg>';rail.appendChild(d);
+  function setOpen(o){sheet.classList.toggle("open",o);scrim.classList.toggle("open",o);d.setAttribute("aria-expanded",o?"true":"false");d.setAttribute("aria-label",o?"Thu bàn chức năng":"Mở bàn chức năng");}
+  function active(s){[].forEach.call(root.querySelectorAll(".ri,.gi"),function(x){x.classList.toggle("on",x.dataset.sem===s);});}
+  function goTo(s){var t=document.getElementById("s-"+s);if(!t)return;active(s);lock=Date.now();pane.scrollTo({top:t.offsetTop-pane.offsetTop-8,behavior:"smooth"});}
+  var lock=0;
+  d.onclick=function(){setOpen(!sheet.classList.contains("open"));};scrim.onclick=function(){setOpen(false);};
+  rail.addEventListener("click",function(e){var b=e.target.closest(".ri");if(!b||b.classList.contains("off"))return;setOpen(false);goTo(b.dataset.sem);});
+  grid.addEventListener("click",function(e){var b=e.target.closest(".gi");if(!b||b.classList.contains("off"))return;setOpen(false);goTo(b.dataset.sem);});
+  document.getElementById("toSL").onclick=function(){goTo("SOAI_LENH");};
+  pane.addEventListener("scroll",function(){if(Date.now()-lock<700)return;var y=pane.scrollTop+pane.clientHeight*.3,cur=null;
+    [].forEach.call(root.querySelectorAll(".blk[data-sem]"),function(s){if(s.offsetTop-pane.offsetTop<=y)cur=s.dataset.sem;});active(pane.scrollTop<40?null:cur);},{passive:true});
+  var ops=[].slice.call(root.querySelectorAll(".op")),cta=document.getElementById("cta"),stt=document.getElementById("stt");
+  ops.forEach(function(o){o.onclick=function(){ops.forEach(function(x){x.setAttribute("aria-checked",x===o?"true":"false");});cta.disabled=false;cta.classList.add("ready");stt.textContent="Đã chọn · còn đổi được trước khi truyền.";};});
+  cta.onclick=function(){stt.textContent="Bản concept: không truyền lệnh thật.";};
+  window.TT={setOpen:setOpen,goTo:goTo};
+})();
+</script>
+</body></html>
