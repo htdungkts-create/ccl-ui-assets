@@ -56,3 +56,10 @@
 ## P039 → P040 · P032 + compact-rail delta
 - Root = commit 579a399 (P032). `ccl-split-p32.js` = byte-identical `ccl-split.js@579a399` (sha 5cdf72d9…3a94b). `ccl-full.css/js` unchanged. P033–P038 files are history, not merged.
 - `ccl-split-p32d.css` = `ccl-split.css@579a399` (sha 39c4d48b…1df4) + 5 lines: `@media(max-width:600px){.cb-rail .m span{display:none}.cb-in{--mi:24px}}`.
+
+## P042 — TWO-ZONE (P041)
+- ccl-split-p42.css = P032 ccl-split.css (579a399) + delta P041 (≤600px). Adapter = ccl-split-p32.js (byte-identical P032, KHÔNG sửa JS).
+- Z1: .sf-rail → 1 hàng 9 cột, cao 46px, icon 22px (19px ≤375), nhãn đủ 8px (7.2px ≤375) condensed, đứng yên ngoài scroll owner.
+- Z2: .sf-pane giữ mặt P032 (hero + rail lớn 5+4 + divider + card), chữ nhỏ hơn, gutter 12px.
+- Thứ tự rail: Soái Lệnh cuối bằng CSS order (như ẢNH 2–3); chờ Cun Củn xác nhận.
+- Không dùng delta P040 (ẩn nhãn).
