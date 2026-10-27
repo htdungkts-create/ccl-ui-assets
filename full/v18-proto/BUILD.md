@@ -49,3 +49,6 @@
 
 ## P036c · Huynh feedback 28/10 01:06 — `ccl-shell-p38.css`
 - = p37 + D5: font Inter 400/500/600 (theo ảnh tham chiếu LIVE CH6T277) + Roboto Condensed cho nhãn strip; chữ nhỏ thêm (title 15.5/600, sec-h 13.5, body 11.5, sh 12.5); rail = compact strip CH6T277 (.cb) in-flow đầu khung + mũi tên mở bảng 5+4 (checkbox CSS, không JS); hero gọn 250–290px, bỏ rail lớn trong hero (không trùng rail).
+
+## P037 → P038 · Exact-source shell — `ccl-shell-p39.css`
+- = ccl-shell-p36.css (CH6T277 CSS nguyên văn + D1 asset URL + D2 host button revert) + D4 compact rail `.cb` in-flow trước khu hội thoại (fixed bị cấm). Font stack nguyên source (ui-serif/Georgia · system-ui), không web font. P036b/c (p37/p38: Inter, chữ nhỏ, bỏ rail hero, checkbox) bị REVERT theo P037 — file giữ lại làm lịch sử, không dùng.
